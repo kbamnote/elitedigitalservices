@@ -1,6 +1,9 @@
 import { ArrowRight, Globe, Smartphone, Apple, Watch, Tv, Rocket } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const TechnologySection = () => {
+  const navigate = useNavigate();
+  
   const platforms = [
     {
       icon: Globe,
@@ -27,6 +30,14 @@ const TechnologySection = () => {
       title: "IOT"
     }
   ];
+
+  const handleExploreMore = () => {
+    navigate('/services');
+  };
+
+  const handlePlatformClick = (platform) => {
+    navigate('/services');
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -95,7 +106,10 @@ const TechnologySection = () => {
           </div>
 
           {/* Explore More Button */}
-          <button className="bg-[#3b82f6] text-white px-8 py-4 rounded-md font-medium inline-flex items-center gap-2 hover:bg-[#2563eb] transition-all duration-300 group">
+          <button 
+            onClick={handleExploreMore}
+            className="bg-[#3b82f6] text-white px-8 py-4 rounded-md font-medium inline-flex items-center gap-2 hover:bg-[#2563eb] transition-all duration-300 group"
+          >
             Explore More
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
@@ -106,6 +120,7 @@ const TechnologySection = () => {
           {platforms.map((platform, index) => (
             <div
               key={index}
+              onClick={() => handlePlatformClick(platform)}
               className="relative group cursor-pointer"
             >
               {/* Card */}

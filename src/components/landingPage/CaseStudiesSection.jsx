@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, ArrowUpCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const CaseStudiesSection = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const autoPlayRef = useRef();
@@ -38,6 +40,14 @@ const CaseStudiesSection = () => {
       categoryColor: "text-[#2563eb]"
     }
   ];
+
+  const handleViewAllCase = () => {
+    navigate('/case-studies');
+  };
+
+  const handleCaseStudyClick = (index) => {
+    navigate('/case-studies');
+  };
 
   // Auto-play functionality
   useEffect(() => {
@@ -95,7 +105,10 @@ const CaseStudiesSection = () => {
           </div>
 
           {/* View All Button */}
-          <button className="bg-[#2563eb] text-white px-8 py-4 rounded-md font-medium inline-flex items-center gap-2 hover:bg-[#1d4ed8] transition-all duration-300 group">
+          <button 
+            onClick={handleViewAllCase}
+            className="bg-[#2563eb] text-white px-8 py-4 rounded-md font-medium inline-flex items-center gap-2 hover:bg-[#1d4ed8] transition-all duration-300 group"
+          >
             View All Case
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
@@ -111,6 +124,7 @@ const CaseStudiesSection = () => {
             {getVisibleSlides().map((study, index) => (
               <div
                 key={`${currentSlide}-${index}`}
+                onClick={() => handleCaseStudyClick(index)}
                 className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer animate-fadeIn"
               >
                 {/* Image */}

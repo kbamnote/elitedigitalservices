@@ -49,7 +49,7 @@ const projects = [
     impact:
       'Modernized origination workflows with a cloud‑native platform and AI‑assisted risk scoring for SME lending.',
     image:
-      'https://images.unsplash.com/photo-1559523161-0fc0d8b38a7e?w=900&h=650&fit=crop',
+      'https://www.alliedmarketresearch.com/assets/sampleimages/digital-lending-platform-market-1610602580.jpeg',
     href: '#',
     icon: Banknote,
     stats: [
@@ -72,7 +72,7 @@ const PortfolioPage = () => {
     activeFilter === 'All' ? projects : projects.filter((p) => p.sector === activeFilter);
 
   return (
-    <main className="bg-gray-50 mt-20">
+    <main className="bg-gray-50">
       {/* Hero */}
       <section className="bg-slate-950 py-16 sm:py-20">
         <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 lg:flex-row lg:items-center">

@@ -44,11 +44,11 @@ const AboutPage = () => {
       {/* Hero */}
       <section className="relative overflow-hidden bg-linear-to-br from-[#0f172a] via-[#020617] to-[#1e3a8a]">
         <div className="absolute inset-0 opacity-60 mix-blend-screen">
-          <div className="absolute -left-40 top-10 h-72 w-72 rounded-full bg-[#2563eb]/40 blur-3xl" />
+          <div className="absolute -left-40 h-72 w-72 rounded-full bg-[#2563eb]/40 blur-3xl" />
           <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-[#38bdf8]/30 blur-3xl" />
         </div>
 
-        <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-6 py-20 lg:flex-row lg:items-center lg:py-28">
+        <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-6 py-20 lg:flex-row lg:items-center lg:py-12">
           <motion.div
             className="max-w-xl"
             initial={{ opacity: 0, x: -40 }}

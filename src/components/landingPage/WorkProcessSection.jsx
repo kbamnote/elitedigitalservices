@@ -93,8 +93,9 @@ const WorkProcessSection = () => {
                     <div className="relative w-64 h-64 mx-auto">
                       <img
                         src={process.image}
-                        alt={process.title}
+                        alt={`Indian software team – ${process.title}`}
                         className="w-full h-full rounded-full object-cover border-8 border-white shadow-lg"
+                        loading="lazy"
                       />
                       
                       {/* Number Badge */}

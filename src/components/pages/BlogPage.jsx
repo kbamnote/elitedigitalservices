@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, User, CalendarDays, Tag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const posts = [
   {
+    id: 'designing-enterprise-software',
     title: 'Designing enterprise software that people actually want to use',
     category: 'Product & UX',
     author: 'Elite Digital Solutions',
@@ -11,11 +13,11 @@ const posts = [
     readTime: '8 min read',
     image:
       'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&h=650&fit=crop',
-    href: '#',
     summary:
       'How to move from feature‑driven requirements to outcome‑driven roadmaps, and why UX research is non‑negotiable for complex internal tools.',
   },
   {
+    id: 'modernising-legacy-platforms',
     title: 'A practical roadmap for modernising legacy platforms',
     category: 'Architecture & Cloud',
     author: 'Elite Digital Solutions',
@@ -23,11 +25,11 @@ const posts = [
     readTime: '9 min read',
     image:
       'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900&h=650&fit=crop',
-    href: '#',
     summary:
       'Where to start when your core systems are decades old: patterns for safely introducing new services, de‑risking migrations, and earning stakeholder trust.',
   },
   {
+    id: 'data-ai-digital-experiences',
     title: 'Using data and AI to unlock smarter digital experiences',
     category: 'Data & AI',
     author: 'Elite Digital Solutions',
@@ -35,7 +37,6 @@ const posts = [
     readTime: '7 min read',
     image:
       'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&h=650&fit=crop',
-    href: '#',
     summary:
       'From intelligent search to personalised content and predictive operations, here are concrete ways AI can support your roadmap today.',
   },
@@ -65,7 +66,7 @@ const BlogPage = () => {
     activeCategory === 'All' ? posts : posts.filter((post) => post.category === activeCategory);
 
   return (
-    <main className="bg-gray-50 mt-20">
+    <main className="bg-gray-50">
       {/* Reading progress */}
       <div className="sticky top-0 z-30 h-1 w-full bg-transparent">
         <div
@@ -133,13 +134,13 @@ const BlogPage = () => {
                 </span>
                 <span>{posts[0].readTime}</span>
               </div>
-              <a
-                href={posts[0].href}
+              <Link
+                to={`/blog/${posts[0].id}`}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563eb]"
               >
                 Read the full article
                 <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
             <div className="relative h-56 overflow-hidden md:h-full">
               <img
@@ -219,13 +220,13 @@ const BlogPage = () => {
                   </h2>
                   <p className="mb-4 text-sm text-slate-600">{post.summary}</p>
                   <div className="mt-auto pt-2">
-                    <a
-                      href={post.href}
+                    <Link
+                      to={`/blog/${post.id}`}
                       className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563eb] group-hover:gap-3"
                     >
                       Read the article
                       <ArrowRight size={16} />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </motion.article>

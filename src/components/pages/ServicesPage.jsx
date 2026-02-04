@@ -100,9 +100,9 @@ const services = [
   },
 ];
 
-const ServicesPage = () => {
+const ServicesPage = ({ onGetQuote }) => {
   return (
-    <main className="bg-gray-50 mt-20">
+    <main className="bg-gray-50">
       {/* Hero */}
       <section className="relative overflow-hidden bg-white">
         <div className="absolute inset-x-0 top-0 h-64 bg-linear-to-br from-[#eff6ff] via-white to-[#e0f2fe]" />
@@ -209,7 +209,10 @@ const ServicesPage = () => {
                   ))}
                 </ul>
                 <div className="mt-auto pt-2">
-                  <button className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563eb] transition group-hover:gap-2.5">
+                  <button 
+                    onClick={onGetQuote}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563eb] transition group-hover:gap-2.5"
+                  >
                     Discuss this service
                     <ArrowRight size={16} />
                   </button>

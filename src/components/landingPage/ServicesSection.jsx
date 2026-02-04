@@ -1,6 +1,9 @@
 import { ArrowRight, Settings, Shield, Code } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ServicesSection = () => {
+  const navigate = useNavigate();
+  
   const services = [
     {
       icon: Settings,
@@ -18,6 +21,10 @@ const ServicesSection = () => {
       description: "High‑performance websites and web applications built with modern JavaScript frameworks and connected to your existing systems."
     }
   ];
+
+  const handleViewAllServices = () => {
+    navigate('/services');
+  };
 
   return (
     <section className="py-20 bg-gray-50">
@@ -42,7 +49,10 @@ const ServicesSection = () => {
           </div>
 
           {/* View All Button */}
-          <button className="bg-[#2563eb] text-white px-8 py-4 rounded-md font-medium inline-flex items-center gap-2 hover:bg-[#1d4ed8] transition-all duration-300 group">
+          <button 
+            onClick={handleViewAllServices}
+            className="bg-[#2563eb] text-white px-8 py-4 rounded-md font-medium inline-flex items-center gap-2 hover:bg-[#1d4ed8] transition-all duration-300 group"
+          >
             View All Services
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>

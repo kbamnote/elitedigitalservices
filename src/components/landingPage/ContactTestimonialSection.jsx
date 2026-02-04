@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Mail, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 const ContactTestimonialSection = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,30 +9,6 @@ const ContactTestimonialSection = () => {
     phone: '',
     message: ''
   });
-
-  const testimonials = [
-    {
-      name: "Suborna Tarchera",
-      role: "Web Developer",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
-      rating: 4,
-      text: "Elite Digital Solutions helped us refactor an aging frontend into a modern React application with cleaner APIs, better performance, and a design system our team can extend."
-    },
-    {
-      name: "John Smith",
-      role: "Project Manager",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
-      rating: 5,
-      text: "Their engineers joined our in‑house squad to deliver a new cloud‑based claims platform. We now release changes weekly instead of quarterly, with far fewer incidents."
-    },
-    {
-      name: "Sarah Johnson",
-      role: "Marketing Director",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
-      rating: 5,
-      text: "The team rebuilt our analytics and marketing stack so we can trust our data and run experiments across web and mobile without relying on developers for every change."
-    }
-  ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -45,26 +20,17 @@ const ContactTestimonialSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Simple form submission - in real app, integrate with backend or email service
     console.log('Form submitted:', formData);
-    // Add your form submission logic here
-  };
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const renderStars = (rating) => {
-    return [...Array(5)].map((_, index) => (
-      <Star
-        key={index}
-        size={20}
-        className={index < rating ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-300 text-gray-300'}
-      />
-    ));
+    alert('Thank you for your message! We will get back to you soon.');
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      phone: '',
+      message: ''
+    });
   };
 
   return (
@@ -73,9 +39,10 @@ const ContactTestimonialSection = () => {
         {/* Left Side - Image */}
         <div className="relative h-64 lg:h-auto">
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&h=1000&fit=crop"
-            alt="Team collaboration"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000&h=1000&fit=crop"
+            alt="Indian software team collaborating in a modern office"
             className="w-full h-full object-cover"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-black/20"></div>
         </div>
@@ -196,7 +163,7 @@ const ContactTestimonialSection = () => {
             </form>
           </div>
 
-          {/* Testimonials Section */}
+            {/* Client Feedback Placeholder */}
           <div className="bg-white p-12 lg:p-16 flex-1 flex flex-col justify-center">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 mb-4">
@@ -204,72 +171,19 @@ const ContactTestimonialSection = () => {
                 <div className="absolute right-1 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full"></div>
               </div>
               <span className="text-[#3b82f6] text-sm font-semibold tracking-wider uppercase">
-                Clients Review
+                Client Feedback
               </span>
             </div>
 
             {/* Title */}
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              What clients say about our delivery.
+              Client feedback coming soon.
             </h2>
 
             {/* Description */}
-            <p className="text-gray-600 mb-12 leading-relaxed">
-              We work with product, technology, and operations teams that need an experienced software development company to help them ship secure, maintainable digital platforms.
+            <p className="text-gray-600 leading-relaxed">
+              We are currently collecting feedback from Indian product and technology teams we partner with on web, mobile, cloud, and data projects. This section will be updated with real client stories soon.
             </p>
-
-            {/* Testimonial Card */}
-            <div className="relative">
-              {/* Quote Icon */}
-              <div className="absolute -top-4 right-0 text-[#3b82f6] text-8xl font-serif leading-none opacity-20">
-                "
-              </div>
-
-              <div className="relative">
-                {/* Profile */}
-                <div className="flex items-center gap-4 mb-6">
-                  <img
-                    src={testimonials[currentTestimonial].image}
-                    alt={testimonials[currentTestimonial].name}
-                    className="w-20 h-20 rounded-full object-cover border-4 border-blue-100"
-                  />
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900">
-                      {testimonials[currentTestimonial].name}
-                    </h4>
-                    <p className="text-gray-600 text-sm">
-                      {testimonials[currentTestimonial].role}
-                    </p>
-                    <div className="flex gap-1 mt-1">
-                      {renderStars(testimonials[currentTestimonial].rating)}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Testimonial Text */}
-                <p className="text-gray-600 leading-relaxed italic">
-                  " {testimonials[currentTestimonial].text} "
-                </p>
-              </div>
-
-              {/* Navigation */}
-              <div className="flex items-center gap-4 mt-8 pt-8 border-t border-gray-200">
-                <button
-                  onClick={prevTestimonial}
-                  className="w-12 h-12 rounded-full border-2 border-[#3b82f6] text-[#3b82f6] flex items-center justify-center hover:bg-[#3b82f6] hover:text-white transition-all duration-300"
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft size={24} />
-                </button>
-                <button
-                  onClick={nextTestimonial}
-                  className="w-12 h-12 rounded-full bg-[#3b82f6] text-white flex items-center justify-center hover:bg-[#2563eb] transition-all duration-300"
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight size={24} />
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>

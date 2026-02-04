@@ -7,6 +7,20 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Hero section zoom animation */
+@keyframes hero-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-hero-zoom {
+  animation: hero-zoom 8s ease-in-out infinite alternate;
+}
+
 ::selection {
   background-color: #2563eb;
   color: #ffffff;

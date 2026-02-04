@@ -43,7 +43,7 @@ const ContactPage = () => {
       </section>
 
       {/* Content */}
-      <section className="-mt-10 pb-20">
+      <section className="mt-20 pb-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
             {/* Form */}

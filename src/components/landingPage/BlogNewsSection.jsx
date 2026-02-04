@@ -1,6 +1,9 @@
 import { ArrowRight, ArrowUp, User, MessageCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const BlogNewsSection = () => {
+  const navigate = useNavigate();
+  
   const blogPosts = [
     {
       date: {
@@ -11,7 +14,7 @@ const BlogNewsSection = () => {
       author: "Admin",
       comments: 0,
       title: "Designing Secure Virtual Courtroom Platforms",
-      link: "#"
+      id: "1"
     },
     {
       date: {
@@ -22,7 +25,7 @@ const BlogNewsSection = () => {
       author: "Admin",
       comments: 0,
       title: "Re‑platforming Retail with Headless Commerce",
-      link: "#"
+      id: "2"
     },
     {
       date: {
@@ -33,9 +36,17 @@ const BlogNewsSection = () => {
       author: "Admin",
       comments: 0,
       title: "Choosing the Right Cloud Platform for Growth",
-      link: "#"
+      id: "3"
     }
   ];
+
+  const handleBlogClick = (postId) => {
+    navigate(`/blog/${postId}`);
+  };
+
+  const handleReadMore = (postId) => {
+    navigate(`/blog/${postId}`);
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -106,14 +117,17 @@ const BlogNewsSection = () => {
 
                 {/* Title */}
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#2563eb] transition-colors duration-300">
-                  <a href={post.link}>
+                  <span 
+                    onClick={() => handleBlogClick(post.id)}
+                    className="cursor-pointer"
+                  >
                     {post.title}
-                  </a>
+                  </span>
                 </h3>
 
                 {/* Read More Link */}
-                <a
-                  href={post.link}
+                <button
+                  onClick={() => handleReadMore(post.id)}
                   className="inline-flex items-center gap-2 text-gray-700 font-semibold hover:text-[#2563eb] transition-colors duration-300 group/link"
                 >
                   Read More
@@ -121,7 +135,7 @@ const BlogNewsSection = () => {
                     size={20} 
                     className="group-hover/link:translate-x-1 transition-transform duration-300" 
                   />
-                </a>
+                </button>
               </div>
             </div>
           ))}

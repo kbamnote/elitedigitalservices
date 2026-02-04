@@ -58,8 +58,9 @@ const HeroSection = () => {
           <div className="absolute inset-0">
             <img
               src={slide.image}
-              alt={`Banner ${index + 1}`}
-              className="w-full h-full object-cover"
+              alt={`Indian technology team banner ${index + 1}`}
+              className={`w-full h-full object-cover ${index === currentSlide ? 'animate-hero-zoom' : ''}`}
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-black/40"></div>
           </div>

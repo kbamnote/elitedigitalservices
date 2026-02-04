@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Linkedin, Youtube, Phone, Clock, ChevronRight, ArrowUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -6,26 +7,26 @@ const Footer = () => {
   };
 
   const itSolutions = [
-    "IT Management",
-    "SEO Optimization",
-    "Web Development",
-    "Cyber Security",
-    "Data Security"
+    { name: "IT Management", path: "/it-management" },
+    { name: "SEO Optimization", path: "/seo-optimization" },
+    { name: "Web Development", path: "/services" },
+    { name: "Cyber Security", path: "/cyber-security" },
+    { name: "Data Security", path: "/data-security" }
   ];
 
   const quickLinks = [
-    "About Elite Digital Solutions",
-    "IT Services",
-    "Engagement Models",
-    "Case Studies",
-    "Our Team"
+    { name: "About Elite Digital Solutions", path: "/about" },
+    { name: "IT Services", path: "/services" },
+    { name: "Engagement Models", path: "/engagement-models" },
+    { name: "Case Studies", path: "/case-studies" },
+    { name: "Our Team", path: "/our-team" }
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Youtube, href: "#", label: "YouTube" }
+    { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+    { icon: Youtube, href: "https://youtube.com", label: "YouTube" }
   ];
 
   return (
@@ -86,13 +87,13 @@ const Footer = () => {
             <ul className="space-y-3">
               {itSolutions.map((item, index) => (
                 <li key={index}>
-                  <a
-                    href="#"
+                  <Link
+                    to={item.path}
                     className="flex items-center gap-2 text-gray-400 hover:text-[#2563eb] transition-colors duration-300 group"
                   >
                     <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -104,13 +105,13 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((item, index) => (
                 <li key={index}>
-                  <a
-                    href="#"
+                  <Link
+                    to={item.path}
                     className="flex items-center gap-2 text-gray-400 hover:text-[#2563eb] transition-colors duration-300 group"
                   >
                     <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -155,12 +156,12 @@ const Footer = () => {
             </p>
             
             <div className="flex gap-6">
-              <a href="#" className="text-gray-400 hover:text-[#2563eb] transition-colors duration-300 text-sm">
+              <Link to="/terms-conditions" className="text-gray-400 hover:text-[#2563eb] transition-colors duration-300 text-sm">
                 Terms & Condition
-              </a>
-              <a href="#" className="text-gray-400 hover:text-[#2563eb] transition-colors duration-300 text-sm">
+              </Link>
+              <Link to="/privacy-policy" className="text-gray-400 hover:text-[#2563eb] transition-colors duration-300 text-sm">
                 Privacy Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,23 +1,42 @@
 import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import Navbar from './components/common/Navbar';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
+import QuoteModal from './components/common/QuoteModal';
 import LandingPage from './components/landingPage/LandingPage';
 import AboutPage from './components/pages/AboutPage';
 import ServicesPage from './components/pages/ServicesPage';
 import PortfolioPage from './components/pages/PortfolioPage';
 import BlogPage from './components/pages/BlogPage';
+import BlogDetailsPage from './components/pages/BlogDetailsPage';
 import ContactPage from './components/pages/ContactPage';
+import ItManagementPage from './components/pages/ItManagementPage';
+import SeoOptimizationPage from './components/pages/SeoOptimizationPage';
+import CyberSecurityPage from './components/pages/CyberSecurityPage';
+import DataSecurityPage from './components/pages/DataSecurityPage';
+import EngagementModelsPage from './components/pages/EngagementModelsPage';
+import CaseStudiesPage from './components/pages/CaseStudiesPage';
+import OurTeamPage from './components/pages/OurTeamPage';
+import TermsConditionsPage from './components/pages/TermsConditionsPage';
+import PrivacyPolicyPage from './components/pages/PrivacyPolicyPage';
 
 function App() {
   const location = useLocation();
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  const openQuoteModal = () => {
+    setIsQuoteModalOpen(true);
+  };
+
+  const closeQuoteModal = () => {
+    setIsQuoteModalOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
@@ -35,8 +54,8 @@ function App() {
               path="/about"
               element={
                 <>
-                  <Header />
-                  <div className="mt-20">
+                  <Header onGetQuote={openQuoteModal} />
+                  <div className="">
                     <AboutPage />
                   </div>
                   <Footer />
@@ -47,9 +66,10 @@ function App() {
               path="/services"
               element={
                 <>
-                  <Header />
-
-                  <ServicesPage />
+                  <Header onGetQuote={openQuoteModal} />
+                  <div className="">
+                    <ServicesPage onGetQuote={openQuoteModal} />
+                  </div>
                   <Footer />
                 </>
               }
@@ -58,8 +78,10 @@ function App() {
               path="/portfolio"
               element={
                 <>
-                  <Header />
-                  <PortfolioPage />
+                  <Header onGetQuote={openQuoteModal} />
+                  <div className="">
+                    <PortfolioPage />
+                  </div>
                   <Footer />
                 </>
               }
@@ -68,8 +90,20 @@ function App() {
               path="/blog"
               element={
                 <>
-                  <Header />
-                  <BlogPage />
+                  <Header onGetQuote={openQuoteModal} />
+                  <div className="">
+                    <BlogPage />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/blog/:id"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <BlogDetailsPage />
                   <Footer />
                 </>
               }
@@ -78,8 +112,101 @@ function App() {
               path="/contact"
               element={
                 <>
-                  <Header />
-                  <ContactPage />
+                  <Header onGetQuote={openQuoteModal} />
+                  <div className="">
+                    <ContactPage />
+                  </div>
+                  <Footer />
+                </>
+              }
+            />
+            {/* New SEO-friendly pages */}
+            <Route
+              path="/it-management"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <ItManagementPage />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/seo-optimization"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <SeoOptimizationPage />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/cyber-security"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <CyberSecurityPage />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/data-security"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <DataSecurityPage />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/engagement-models"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <EngagementModelsPage />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/case-studies"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <CaseStudiesPage />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/our-team"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <OurTeamPage />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/terms-conditions"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <TermsConditionsPage />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/privacy-policy"
+              element={
+                <>
+                  <Header onGetQuote={openQuoteModal} />
+                  <PrivacyPolicyPage />
                   <Footer />
                 </>
               }
@@ -87,6 +214,7 @@ function App() {
           </Routes>
         </motion.div>
       </AnimatePresence>
+      <QuoteModal isOpen={isQuoteModalOpen} onClose={closeQuoteModal} />
     </div>
   );
 }

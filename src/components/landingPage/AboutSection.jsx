@@ -1,6 +1,12 @@
 import { ArrowRight, Play, Settings, Headphones, ArrowUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const AboutSection = () => {
+  const navigate = useNavigate();
+
+  const handleExploreMore = () => {
+    navigate('/about');
+  };
   return (
     <section className="py-20 bg-white relative overflow-hidden">
       <div className="container mx-auto px-6">
@@ -99,7 +105,10 @@ const AboutSection = () => {
             {/* Bottom Section */}
             <div className="flex items-center gap-8">
               {/* Explore More Button */}
-              <button className="bg-[#2563eb] text-white px-8 py-4 rounded-md font-medium inline-flex items-center gap-2 hover:bg-[#1d4ed8] transition-all duration-300 group">
+              <button 
+                onClick={handleExploreMore}
+                className="bg-[#2563eb] text-white px-8 py-4 rounded-md font-medium inline-flex items-center gap-2 hover:bg-[#1d4ed8] transition-all duration-300 group"
+              >
                 Explore More
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </button>

@@ -26,28 +26,36 @@ export default function Navbar() {
         {/* Right side - Social icons */}
         <div className="flex items-center gap-4">
           <a 
-            href="#" 
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noreferrer"
             className="hover:text-gray-300 transition-colors"
             aria-label="Facebook"
           >
             <Facebook size={18} />
           </a>
           <a 
-            href="#" 
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer"
             className="hover:text-gray-300 transition-colors"
             aria-label="Twitter"
           >
             <Twitter size={18} />
           </a>
           <a 
-            href="#" 
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noreferrer"
             className="hover:text-gray-300 transition-colors"
             aria-label="LinkedIn"
           >
             <Linkedin size={18} />
           </a>
           <a 
-            href="#" 
+            href="https://www.youtube.com"
+            target="_blank"
+            rel="noreferrer"
             className="hover:text-gray-300 transition-colors"
             aria-label="YouTube"
           >
